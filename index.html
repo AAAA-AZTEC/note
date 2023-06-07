@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notes Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    #noteForm {
+      margin-bottom: 20px;
+    }
+    
+    #noteList {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .note {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Notes</h1>
+  
+  <form id="noteForm">
+    <input type="text" id="noteInput" placeholder="Enter a note..." />
+    <button type="submit">Add</button>
+  </form>
+  
+  <ul id="noteList"></ul>
+  
+  <script>
+    document.getElementById('noteForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      var noteInput = document.getElementById('noteInput');
+      var noteText = noteInput.value.trim();
+      
+      if (noteText !== '') {
+        var noteItem = document.createElement('li');
+        noteItem.className = 'note';
+        noteItem.textContent = noteText;
+        
+        var noteList = document.getElementById('noteList');
+        noteList.appendChild(noteItem);
+        
+        noteInput.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
